@@ -71,9 +71,9 @@ The data is structured in Firestore to be user-specific and scalable.
 
 ## Screenshots
 
-![login](Assets\animations\Screenshot_20250906-134336.png)
-![Signup](Assets\animations\Screenshot_20250906-134339.png)
-![Home](Assets\animations\Screenshot_20250906-134702.png)
-![Add_card](Assets\animations\Screenshot_20250906-134706.png)
-![Card_view](Assets\animations\Screenshot_20250906-134713.png)
-![Card_view](Assets\animations\Screenshot_20250906-134715.png)
+![login](https://github.com/hardik1812/flashcard/blob/main/Assets/animations/Screenshot_20250906-134336.png)
+![Signup](https://github.com/hardik1812/flashcard/blob/main/Assets/animations/Screenshot_20250906-134339.png)
+![Home](https://github.com/hardik1812/flashcard/blob/main/Assets/animations/Screenshot_20250906-134702.png)
+![Add_card](https://github.com/hardik1812/flashcard/blob/main/Assets/animations/Screenshot_20250906-134706.png)
+![Card_view](https://github.com/hardik1812/flashcard/blob/main/Assets/animations/Screenshot_20250906-134713.png)
+![Card_view](https://github.com/hardik1812/flashcard/blob/main/Assets/animations/Screenshot_20250906-134715.png)
