@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "12361704949",
+    "project_id": "flashcard-46cb1",
+    "storage_bucket": "flashcard-46cb1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12361704949:android:880ea2c56274033b73acbc",
+        "android_client_info": {
+          "package_name": "com.example.cardswipper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7rTwlXttKudH8G3POdvpcbGAmgkz2g-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
