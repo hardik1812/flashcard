@@ -8,8 +8,6 @@ import 'package:cardswipper/cardviewer.dart';
 
 // Assuming these are your page files
 
-
-
 class HomeApp extends StatelessWidget {
   const HomeApp({super.key});
 
@@ -44,7 +42,9 @@ class HomeApp extends StatelessWidget {
                           const Icon(Icons.menu, color: Colors.white, size: 35),
                           GestureDetector(
                             onTap: () {
-                              Fluttertoast.showToast(msg: 'Double tap to sign out');
+                              Fluttertoast.showToast(
+                                msg: 'Double tap to sign out',
+                              );
                             },
                             onDoubleTap: () async {
                               await FirebaseAuth.instance.signOut();
@@ -52,19 +52,26 @@ class HomeApp extends StatelessWidget {
                               if (!context.mounted) return;
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Login()),
+                                MaterialPageRoute(
+                                  builder: (context) => const Login(),
+                                ),
                               );
                               Fluttertoast.showToast(msg: 'Signed out');
                             },
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 8,
+                              ),
                               decoration: BoxDecoration(
                                 color: const Color(0xFFFFF0F0),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(
                                 user?.displayName?.toUpperCase() ?? 'GUEST',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -102,7 +109,9 @@ class HomeApp extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FlashcardCreatorPage()),
+                        MaterialPageRoute(
+                          builder: (context) => const FlashcardCreatorPage(),
+                        ),
                       );
                     },
                     child: Container(
@@ -122,7 +131,11 @@ class HomeApp extends StatelessWidget {
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.add_circle, color: Color(0xFFEF9B87), size: 30),
+                          Icon(
+                            Icons.add_circle,
+                            color: Color(0xFFEF9B87),
+                            size: 30,
+                          ),
                           SizedBox(width: 10),
                           Text(
                             'Create a New Set',
@@ -142,21 +155,30 @@ class HomeApp extends StatelessWidget {
                       stream: user == null
                           ? null
                           : FirebaseFirestore.instance
-                              .collection(user.uid)
-                              .orderBy('createdAt', descending: true)
-                              .snapshots(),
+                                .collection(user.uid)
+                                .orderBy('createdAt', descending: true)
+                                .snapshots(),
                       builder: (context, snapshot) {
                         if (user == null) {
-                          return const Center(child: Text("Please log in to see your sets."));
+                          return const Center(
+                            child: Text("Please log in to see your sets."),
+                          );
                         }
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return const Center(child: CircularProgressIndicator());
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         }
                         if (snapshot.hasError) {
-                          return const Center(child: Text('Something went wrong.'));
+                          return const Center(
+                            child: Text('Something went wrong.'),
+                          );
                         }
                         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                          return const Center(child: Text('No flashcard sets found.'));
+                          return const Center(
+                            child: Text('No flashcard sets found.'),
+                          );
                         }
 
                         final flashcardSets = snapshot.data!.docs;
@@ -166,7 +188,8 @@ class HomeApp extends StatelessWidget {
                           itemCount: flashcardSets.length,
                           itemBuilder: (context, index) {
                             final setDoc = flashcardSets[index];
-                            final setData = setDoc.data() as Map<String, dynamic>;
+                            final setData =
+                                setDoc.data() as Map<String, dynamic>;
                             final setTitle = setData['title'] ?? 'No Title';
                             final cardCount = setData['cardCount'] ?? 0;
 
@@ -174,7 +197,8 @@ class HomeApp extends StatelessWidget {
                               // ### FIX STARTS HERE ###
                               onTap: () async {
                                 // 1. Fetch the 'cards' subcollection for the tapped set.
-                                final cardsSnapshot = await FirebaseFirestore.instance
+                                final cardsSnapshot = await FirebaseFirestore
+                                    .instance
                                     .collection(user.uid)
                                     .doc(setDoc.id)
                                     .collection('cards')
@@ -184,12 +208,14 @@ class HomeApp extends StatelessWidget {
                                 //    that FlashcardShowPage expects.
                                 final List<Map<String, String>> flashcardsData =
                                     cardsSnapshot.docs.map((doc) {
-                                  final data = doc.data();
-                                  return {
-                                    'question': data['question']?.toString() ?? '',
-                                    'answer': data['answer']?.toString() ?? '',
-                                  };
-                                }).toList();
+                                      final data = doc.data();
+                                      return {
+                                        'question':
+                                            data['question']?.toString() ?? '',
+                                        'answer':
+                                            data['answer']?.toString() ?? '',
+                                      };
+                                    }).toList();
 
                                 // 3. Navigate to the viewer page with the fetched data.
                                 //    Check if the widget is still mounted before navigating.
@@ -207,7 +233,10 @@ class HomeApp extends StatelessWidget {
                               // ### FIX ENDS HERE ###
                               child: Container(
                                 padding: const EdgeInsets.all(20),
-                                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 8,
+                                ),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15),
@@ -220,10 +249,12 @@ class HomeApp extends StatelessWidget {
                                   ],
                                 ),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           setTitle,
@@ -240,10 +271,16 @@ class HomeApp extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    const Icon(
-                                      Icons.play_circle_outline_rounded,
-                                      color: Color(0xFF501E91),
-                                      size: 30,
+                                    GestureDetector(
+                                      onDoubleTap: () async{
+                                        await FirebaseFirestore.instance.collection(user.uid).doc(setDoc.id).delete();
+                                        Fluttertoast.showToast(msg: 'Deleted');
+                                      },
+                                      child: Icon(
+                                        Icons.delete_forever_outlined,
+                                        color: Color(0xFF501E91),
+                                        size: 30,
+                                      ),
                                     ),
                                   ],
                                 ),

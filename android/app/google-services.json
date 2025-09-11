@@ -12,7 +12,20 @@
           "package_name": "com.example.cardswipper"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "12361704949-oc67lhheteu8s42mc7hqiojbnl4sg0v3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cardswipper",
+            "certificate_hash": "3a3abee64131fdd5d901f06d3332ae5d028bea4a"
+          }
+        },
+        {
+          "client_id": "12361704949-r13cbd8cbehj86o37l4s8845fplbahjf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB7rTwlXttKudH8G3POdvpcbGAmgkz2g-k"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12361704949-r13cbd8cbehj86o37l4s8845fplbahjf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
